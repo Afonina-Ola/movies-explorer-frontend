@@ -1,0 +1,97 @@
+.header {
+  width: 100%;
+  position: absolute;
+  z-index: 2;
+  padding-left: 70px;
+  padding-right: 70px;
+  background-color: transparent;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__smile {
+  width: 38px;
+  margin-top: 18px;
+  margin-bottom: 18px;
+}
+
+.header__container-not-logged {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__not-logged-link {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: #ffffff;
+  text-decoration: none;
+  margin-right: 30px;
+}
+
+.header__not-logged-button {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: #000000;
+  border: none;
+  background-color: #2be080;
+  border-radius: 3px;
+  padding: 8px 20px;
+}
+
+.header__container-logged {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.header__container-movies-link {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__movies-link {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 18px;
+  color: #000000;
+  margin-right: 16px;
+  text-decoration: none;
+  margin-left: 44px;
+}
+
+.header__movies-save-link {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 18px;
+  color: #000000;
+  text-decoration: none;
+}
+
+.header__account-button {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  color: #000000;
+  border: none;
+  background-color: #f9f9f9;
+  border-radius: 20px;
+  padding: 8px 20px;
+}

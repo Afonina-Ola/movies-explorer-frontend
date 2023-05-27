@@ -1,0 +1,78 @@
+.about-me {
+  display: block;
+  background-color: #ffffff;
+  padding-left: 70px;
+  padding-right: 70px;
+  padding-top: 110px;
+}
+
+.about-me__title {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 27px;
+  color: #000000;
+  margin-bottom: 23px;
+  margin-top: 0;
+}
+
+.about-me__profile-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-top: #000000 1px solid;
+  padding-top: 66px;
+}
+
+.about-me__profile-container-text-link {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.about-me__profile-container-text {
+  display: block;
+}
+
+.about-me__student-name {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 58px;
+  color: #000000;
+  margin: 0;
+}
+
+.about-me__student-profession {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 20px;
+  color: #000000;
+  margin-top: 18px;
+}
+
+.about-me__student-info {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  color: #000000;
+  margin-top: 26px;
+  width: 600px;
+}
+
+.about-me__link-github {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #000000;
+  text-decoration: none;
+}
+
+.about-me__photo {
+  width: 270px;
+}
+
