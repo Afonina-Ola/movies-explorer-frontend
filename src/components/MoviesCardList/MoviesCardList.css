@@ -1,0 +1,7 @@
+.movies-card-list {
+  padding-left: 70px;
+  padding-right: 70px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px 24px; 
+}

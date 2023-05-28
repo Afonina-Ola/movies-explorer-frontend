@@ -1,38 +1,39 @@
 import React from 'react';
-// Добавили компонент Header с логотипом проекта
-// import Header from './Header';
-import { Routes, Route } from 'react-router-dom';
+
+import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import '../../index.css';
-import Footer from '../Footer/Footer.js';
-import Header from '../Header/Header.js';
-import Promo from '../Promo/Promo.js';
-import AboutProject from '../AboutProject/AboutProject.js';
-import Techs from '../Techs/Techs.js';
-import AboutMe from '../AboutMe/AboutMe.js';
-import MoviesCard from '../MoviesCard/MoviesCard.js';
-import Portfolio from '../Portfolio/Portfolio.js';
-import Register from '../Register/Register.js';
-import Login from '../Login/Login.js';
+import Main from '../Main/Main.js';
+import Movies from '../Movies/Movies.js';
+import SavedMovies from '../SavedMovies/SavedMovies.js';
 import Profile from '../Profile/Profile.js';
-import FilterCheckbox from '../FilterCheckbox/FilterCheckbox.js';
+import Login from '../Login/Login.js';
+import Register from '../Register/Register.js';
 
 function App() {
   return (
     <div className="root">
-      <Promo />
-      {/* <AboutProject />
-      <Techs />
-      <AboutMe />
-      <Portfolio />
-      <MoviesCard />
-      <Register /> 
-      <Login />
-     <Profile /> 
-     <FilterCheckbox/>
-      <Footer/> */}
-      <Header />
-    </div>
+      <Switch>
+        <Route exact path="/">
+          <Main />
+        </Route>
+        <Route exact path="/movies">
+          <Movies />
+        </Route>
+        <Route exact path="/saved-movies">
+          <SavedMovies />
+        </Route>
+        <Route exact path="/profile">
+          <Profile errorMessage={''}/>
+        </Route>
+        <Route exact path="/signin">
+          <Login errorMessage={''}/>
+        </Route>
+        <Route exact path="/signup">
+          <Register errorMessage={''}/>
+        </Route>
+              </Switch>    
+         </div>
   );
 }
 

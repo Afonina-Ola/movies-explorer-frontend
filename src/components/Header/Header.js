@@ -3,9 +3,7 @@ import { Routes, Route, NavLink } from 'react-router-dom';
 import './Header.css';
 import smile from '../../images/smile.svg';
 
-function Header() {
-    // хук useState применен временно 
-    const [isLogged, setIsLogged] = useState(true)
+function Header({isLogged}) {
     return (
         <header className="header">
             <img src={smile} className="header__smile" alt='улыбающийся смайл' />

@@ -1,0 +1,20 @@
+.movies__button-add {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #000000;
+  opacity: 1;
+  transition: opacity 0.4s;
+  margin: 0 auto;
+  border: 0;
+  background: transparent;
+  padding: 50px 480px 80px;
+}
+
+.movies__button-add:hover {
+  opacity: 0.8;
+}

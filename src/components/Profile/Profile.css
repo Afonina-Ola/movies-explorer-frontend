@@ -60,16 +60,27 @@
   margin: 0;
   padding: 0;
 }
+
+.profile__button-groupe {
+  margin-top: 220px;
+}
+
 .profile__button-editing {
   font-style: normal;
   font-weight: 400;
   font-size: 13px;
   line-height: 16px;
   color: #000000;
-  margin: 220px auto 0;
+  margin: 0 auto;
   display: block;
   border: none;
   background-color: transparent;
+  opacity: 1;
+  transition: opacity 0.4s;
+}
+
+.profile__button-editing:hover {
+  opacity: 0.8;
 }
 
 .profile__button-exit {
@@ -82,4 +93,18 @@
   display: block;
   border: none;
   background-color: transparent;
+  opacity: 1;
+  transition: opacity 0.4s;
+}
+
+.profile__button-exit:hover {
+  opacity: 0.8;
+}
+.profile__error-message {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 13px;
+  text-align: center;
+  color: #ff004c;
 }
