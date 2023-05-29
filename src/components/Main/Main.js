@@ -13,10 +13,10 @@ function Main() {
       {/* <Header isLogged={false} /> */}
       <Promo />
       <AboutProject />
-      {/* <Techs />
+      <Techs /> 
       <AboutMe />
       <Portfolio />
-      <Footer /> */}
+      {/* <Footer /> */}
     </main>
   );
 }

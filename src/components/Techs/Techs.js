@@ -12,7 +12,7 @@ function Techs() {
             </div>
             <div className="techs__table">
                 {tabs.map((item) => (
-                    <div className="techs__table-item">
+                    <div key={item} className="techs__table-item">
                         {item}
                     </div>
                 ))}

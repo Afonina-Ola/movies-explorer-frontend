@@ -2,25 +2,26 @@
   display: flex;
   background-color: #5c5c5c;
   flex-direction: row;
-  justify-content: space-between;
-  padding-left: 70px;
-  padding-right: 70px;
+  justify-content: space-between;  
   position: relative;
   z-index: 1;
+  overflow: hidden;
+  padding-left: 70px;
+  padding-right: 70px;
 }
 
 @media screen and (max-width: 769px) {
   .promo {
     flex-direction: column;
-    padding-left: 44px;
-    padding-right: 44px;
+    padding-left: 50px;
+    padding-right: 50px;
   }
 }
 
 @media screen and (max-width: 390px) {
   .promo {
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 18px;
+    padding-right: 18px;
   }
 }
 
