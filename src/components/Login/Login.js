@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './Login.css';
 import smile from '../../images/smile.svg';
 
@@ -23,7 +23,7 @@ function Login({ errorMessage }) {
           <button type="submit" className="login__button">Войти</button>
         </div>
       </form>
-      <NavLink to="/sign-in" className="login__link">Ещё не зарегистрированы?<span class="login__link-entrance">Регистрация</span></NavLink>
+      <NavLink to="/signup" className="login__link">Ещё не зарегистрированы?<span class="login__link-entrance">Регистрация</span></NavLink>
     </div>
   );
 }

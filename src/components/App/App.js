@@ -9,11 +9,12 @@ import SavedMovies from '../SavedMovies/SavedMovies.js';
 import Profile from '../Profile/Profile.js';
 import Login from '../Login/Login.js';
 import Register from '../Register/Register.js';
+import PageError from '../PageError/PageError.js';
 
 function App() {
   return (
     <div className="root">
-      <Switch>
+      {/* <Switch>
         <Route exact path="/">
           <Main />
         </Route>
@@ -24,16 +25,20 @@ function App() {
           <SavedMovies />
         </Route>
         <Route exact path="/profile">
-          <Profile errorMessage={''}/>
+          <Profile errorMessage={''} />
         </Route>
         <Route exact path="/signin">
-          <Login errorMessage={''}/>
+          <Login errorMessage={''} />
         </Route>
         <Route exact path="/signup">
-          <Register errorMessage={''}/>
+          <Register errorMessage={''} />
         </Route>
-              </Switch>    
-         </div>
+        <Route exact path="*">
+          <PageError />
+        </Route>
+      </Switch> */}
+      <Main />
+    </div>
   );
 }
 

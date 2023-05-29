@@ -10,13 +10,13 @@ import Portfolio from '../Portfolio/Portfolio.js';
 function Main() {
   return (
     <main>
-      <Header isLogged={false} />
+      {/* <Header isLogged={false} /> */}
       <Promo />
       <AboutProject />
-      <Techs />
+      {/* <Techs />
       <AboutMe />
       <Portfolio />
-      <Footer />
+      <Footer /> */}
     </main>
   );
 }

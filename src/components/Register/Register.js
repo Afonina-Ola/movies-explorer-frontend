@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './Register.css';
 import smile from '../../images/smile.svg';
 
@@ -25,7 +25,7 @@ function Register({ errorMessage }) {
         <button type="submit" className="register__button">Зарегистрироваться</button>
         </div>
       </form>
-      <NavLink to="/sign-in" className="register__link">Уже зарегистрированы?<span class="register__link-entrance">Войти</span></NavLink>
+      <NavLink to="/signin" className="register__link">Уже зарегистрированы?<span class="register__link-entrance">Войти</span></NavLink>
     </div>
   );
 }
