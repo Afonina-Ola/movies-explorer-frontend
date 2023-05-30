@@ -1,0 +1,16 @@
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: -5;
+  transition: right 0.3s ease-out;
+  background-color: #000;
+  opacity: 0;
+}
+
+.overlay_opened {
+  opacity: 0.3;
+  z-index: 5;
+}

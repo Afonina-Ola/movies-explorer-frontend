@@ -57,3 +57,15 @@
   flex-grow: 1;
   max-height: 203px;
 }
+
+@media screen and (max-width: 830px) {
+  .movies-card__image {
+    max-height: 190px;
+  }
+}
+
+@media screen and (max-width: 530px) {
+  .movies-card__image {
+    max-height: 168px;
+  }
+}

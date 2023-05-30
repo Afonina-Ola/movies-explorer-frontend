@@ -18,3 +18,15 @@
 .movies__button-add:hover {
   opacity: 0.8;
 }
+
+@media screen and (max-width: 769px) {
+  .movies__button-add {
+    padding: 61px 224px 89px;
+  }
+}
+
+@media screen and (max-width: 530px) {
+  .movies__button-add {
+    padding: 61px 60px 89px;
+  }
+}

@@ -1,9 +1,11 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './Header.css';
+import AccountButton from '../AccountButton/AccountButton.js';
 import smile from '../../images/smile.svg';
+import burger from '../../images/burger-icon.svg';
 
-function Header({isLogged}) {
+function Header({ isLogged, onBurgerButtonClick }) {
     return (
         <header className="header">
             <img src={smile} className="header__smile" alt='улыбающийся смайл' />
@@ -12,13 +14,16 @@ function Header({isLogged}) {
                     <NavLink to="/movies" className="header__movies-link">Фильмы</NavLink>
                     <NavLink to="/saved-movies" className="header__movies-save-link">Сохранённые фильмы</NavLink >
                 </div>
-                <button className="header__account-button">Аккаунт</button>
+                <AccountButton className={'header__account-button'} />
             </div>}
-            {!isLogged &&
-                <div className="header__container-not-logged">
+            {!isLogged ?
+                (<div className="header__container-not-logged">
                     <NavLink to="/signup" className="header__not-logged-link">Регистрация</NavLink>
                     <button type="submit" className="header__not-logged-button">Войти</button>
-                </div>
+                </div>) : (
+                    <button onClick={onBurgerButtonClick} className='header__burger-button'>
+                        <img src={burger} alt='burger' />
+                    </button>)
             }
         </header>
     );

@@ -14,7 +14,7 @@ import PageError from '../PageError/PageError.js';
 function App() {
   return (
     <div className="root">
-      {/* <Switch>
+      <Switch>
         <Route exact path="/">
           <Main />
         </Route>
@@ -36,8 +36,7 @@ function App() {
         <Route exact path="*">
           <PageError />
         </Route>
-      </Switch> */}
-      <Main />
+      </Switch>
     </div>
   );
 }

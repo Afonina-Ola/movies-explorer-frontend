@@ -14,6 +14,18 @@
   align-items: center;
 }
 
+@media screen and (max-width: 769px) {
+  .header {
+    padding: 0 30px;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .header {
+    padding: 0 14px;
+  }
+}
+
 .header__smile {
   width: 38px;
   margin-top: 18px;
@@ -61,7 +73,6 @@
   opacity: 0.8;
 }
 
-
 .header__container-logged {
   display: flex;
   flex-direction: row;
@@ -75,6 +86,18 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+}
+
+@media screen and (max-width: 769px) {
+  .header__container-movies-link {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 769px) {
+  .header__account-button {
+    display: none;
+  }
 }
 
 .header__movies-link {
@@ -109,18 +132,14 @@
   opacity: 0.7;
 }
 
-.header__account-button {
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 16px;
-  color: #000000;
-  border: none;
-  background-color: #f9f9f9;
-  border-radius: 20px;
-  padding: 8px 20px;
+.header__burger-button {
+  display: none;
 }
 
-.header__account-button:hover {
-  opacity: 0.7;
+@media screen and (max-width: 769px) {
+  .header__burger-button {
+    display: block;
+    border: none;
+    background-color: transparent;
+  }
 }
