@@ -2,7 +2,7 @@
   display: flex;
   background-color: #5c5c5c;
   flex-direction: row;
-  justify-content: space-between;  
+  justify-content: space-between;
   position: relative;
   z-index: 1;
   overflow: hidden;
@@ -145,6 +145,6 @@
   .promo__logo {
     width: 210px;
     height: 206px;
-    margin-top: 70px;  
+    margin-top: 70px;
   }
 }

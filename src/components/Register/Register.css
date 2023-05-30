@@ -15,7 +15,7 @@
 }
 
 @media screen and (max-width: 420px) {
-  .register__form{
+  .register__form {
     width: 260px;
   }
 }
@@ -26,8 +26,8 @@
 
 @media screen and (max-width: 420px) {
   .register__smile {
-   margin: 0 auto;
-   display: block;
+    margin: 0 auto;
+    display: block;
   }
 }
 
@@ -91,7 +91,7 @@
   }
 }
 
-.register__button { 
+.register__button {
   margin-bottom: 0px;
   width: 100%;
   background-color: #2be080;
@@ -108,10 +108,10 @@
 
 .register__button:hover {
   opacity: 0.8;
-} 
+}
 
 .register__link {
-  margin: 16px auto 0;  
+  margin: 16px auto 0;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -124,10 +124,9 @@
 
 .register__link:hover {
   opacity: 0.7;
-} 
+}
 
-
-.register__link-entrance {  
+.register__link-entrance {
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -137,7 +136,7 @@
 
 .register__link-entrance:hover {
   opacity: 0.7;
-} 
+}
 
 .register__error-message {
   font-style: normal;
@@ -147,4 +146,3 @@
   text-align: center;
   color: #ff004c;
 }
-

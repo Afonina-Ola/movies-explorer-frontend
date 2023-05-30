@@ -1,6 +1,5 @@
 import React from 'react';
 import MoviesCard from '../MoviesCard/MoviesCard'
-import { Routes, Route } from 'react-router-dom';
 import './MoviesCardList.css';
 
 function MoviesCardList({ cards, isSavedMode }) {

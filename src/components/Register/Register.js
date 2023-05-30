@@ -18,11 +18,11 @@ function Register({ errorMessage }) {
           <input required type="password" className="register__input" name="password" placeholder="Пароль" />
         </fieldset>
         <div className="register__button-groupe">
-        {errorMessage.length > 0 && <p className="register__error-message">
+          {errorMessage.length > 0 && <p className="register__error-message">
             {errorMessage}
           </p>
           }
-        <button type="submit" className="register__button">Зарегистрироваться</button>
+          <button type="submit" className="register__button">Зарегистрироваться</button>
         </div>
       </form>
       <NavLink to="/signin" className="register__link">Уже зарегистрированы?<span class="register__link-entrance">Войти</span></NavLink>

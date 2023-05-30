@@ -26,8 +26,8 @@
 
 @media screen and (max-width: 420px) {
   .login__smile {
-   margin: 0 auto;
-   display: block;
+    margin: 0 auto;
+    display: block;
   }
 }
 
