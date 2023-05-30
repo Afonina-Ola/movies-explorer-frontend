@@ -8,9 +8,27 @@
   z-index: 1;
 }
 
+@media screen and (max-width: 769px) {
+  .profile {
+    padding-top: 310px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .profile {
+    padding-top: 144px;
+  }
+}
+
 .profile__container {
   width: 410px;
   margin: auto;
+}
+
+@media screen and (max-width: 430px) {
+  .profile__container {
+    width: 260px;
+  }
 }
 
 .profile__greeting {
@@ -64,6 +82,12 @@
 
 .profile__button-groupe {
   margin-top: 220px;
+}
+
+@media screen and (max-width: 430px) {
+  .profile__button-groupe {
+    margin-top: 380px;
+  }
 }
 
 .profile__button-editing {

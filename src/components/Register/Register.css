@@ -1,6 +1,12 @@
 .register {
   background-color: #ffffff;
-  padding: 70px 0;
+  padding-top: 70px;
+}
+
+@media screen and (max-width: 769px) {
+  .register {
+    padding-top: 232px;
+  }
 }
 
 .register__form {
@@ -8,8 +14,21 @@
   margin: auto;
 }
 
+@media screen and (max-width: 420px) {
+  .register__form{
+    width: 260px;
+  }
+}
+
 .register__smile {
   width: 38px;
+}
+
+@media screen and (max-width: 420px) {
+  .register__smile {
+   margin: 0 auto;
+   display: block;
+  }
 }
 
 .register__greeting {
@@ -19,6 +38,13 @@
   line-height: 29px;
   color: #000000;
   margin: 40px 0;
+}
+
+@media screen and (max-width: 420px) {
+  .register__greeting {
+    margin: 50px auto 80px;
+    width: max-content;
+  }
 }
 
 .register__form-input-container {
@@ -57,6 +83,12 @@
 
 .register__button-groupe {
   margin-top: 91px;
+}
+
+@media screen and (max-width: 430px) {
+  .register__button-groupe {
+    margin-top: 160px;
+  }
 }
 
 .register__button { 

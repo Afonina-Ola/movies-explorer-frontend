@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { Route, Switch } from 'react-router-dom';
-import './App.css';
 import '../../index.css';
 import Main from '../Main/Main.js';
 import Movies from '../Movies/Movies.js';
@@ -25,7 +24,7 @@ function App() {
           <SavedMovies />
         </Route>
         <Route exact path="/profile">
-          <Profile errorMessage={''} />
+          <Profile errorMessage={'текст ошибки'} />
         </Route>
         <Route exact path="/signin">
           <Login errorMessage={''} />
