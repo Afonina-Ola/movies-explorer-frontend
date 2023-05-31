@@ -1,4 +1,4 @@
-.pageError {
+.page-error {
   background-color: #ffffff;
   width: 400px;
   margin: 0 auto;
@@ -6,35 +6,35 @@
 }
 
 @media screen and (max-width: 769px) {
-  .pageError {
+  .page-error {
     margin-top: 408px;
   }
 }
 
 @media screen and (max-width: 430px) {
-  .pageError {
+  .page-error {
     margin-top: 329px;
     width: 280px;
   }
 }
 
-.pageError__error-groupe {
+.page-error__error-groupe {
   margin-bottom: 208px;
 }
 
 @media screen and (max-width: 769px) {
-  .pageError__error-groupe {
+  .page-error_error-groupe {
     margin-bottom: 184px;
   }
 }
 
 @media screen and (max-width: 430px) {
-  .pageError {
+  .page-error {
     margin-bottom: 284px;
   }
 }
 
-.pageError__error-number {
+.page-error__error-number {
   font-style: normal;
   font-weight: 400;
   font-size: 140px;
@@ -45,13 +45,13 @@
 }
 
 @media screen and (max-width: 430px) {
-  .pageError__error-number {
+  .page-error__error-number {
     font-size: 80px;
     line-height: 97px;
   }
 }
 
-.pageError__error-message {
+.page-error__error-message {
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -62,13 +62,13 @@
 }
 
 @media screen and (max-width: 430px) {
-  .pageError__error-message {
+  .page-error__error-message {
     font-size: 12px;
     line-height: 15px;
   }
 }
 
-.pageError__link {
+.page-error__link {
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -82,12 +82,12 @@
   transition: opacity 0.4s;
 }
 
-.pageError__link:hover {
+.page-error__link:hover {
   opacity: 0.7;
 }
 
 @media screen and (max-width: 430px) {
-  .pageError__link {
+  .page-error__link {
     font-size: 12px;
     line-height: 15px;
   }

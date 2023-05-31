@@ -5,9 +5,9 @@ import smile from '../../images/smile.svg';
 
 function Register({ errorMessage }) {
   return (
-    <div className="register">
+    <main className="register">
       <form className="register__form" >
-        <img src={smile} className="register__smile" alt='улыбающийся смайл' />
+      <NavLink to="/" className="register__smile-link"><img src={smile} className="register__smile" alt='улыбающийся смайл' /></NavLink>        
         <p className="register__greeting">Добро пожаловать!</p>
         <fieldset className="register__form-input-container">
           <h3 className="register__input-title">Имя</h3>
@@ -25,8 +25,8 @@ function Register({ errorMessage }) {
           <button type="submit" className="register__button">Зарегистрироваться</button>
         </div>
       </form>
-      <NavLink to="/signin" className="register__link">Уже зарегистрированы?<span class="register__link-entrance">Войти</span></NavLink>
-    </div>
+      <NavLink to="/signin" className="register__link">Уже зарегистрированы?<span className="register__link-entrance">Войти</span></NavLink>
+    </main>
   );
 }
 

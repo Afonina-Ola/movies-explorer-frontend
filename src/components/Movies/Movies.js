@@ -22,17 +22,17 @@ function Movies() {
     return (
         <>
             <Header onBurgerButtonClick={() => setIsNavigationOpened(true)} isLogged={true} />
-            <section>
+            <main>
                 <SearchForm />
                 <MoviesCardList cards={cardsData} />
                 {!isLoading &&
                     <button onClick={loadMore} className="movies__button-add">Ещё</button>
                 }
                 {isLoading && <Preloader />}
-                <Footer />
-                <Navigation onCloseButtonClick={() => setIsNavigationOpened(false)} isOpened={isNavigationOpened} />
-                <Overlay onOverlayClick={() => setIsNavigationOpened(false)} isOpened={isNavigationOpened} />
-            </section>
+            </main>
+            <Footer />
+            <Navigation onCloseButtonClick={() => setIsNavigationOpened(false)} isOpened={isNavigationOpened} />
+            <Overlay onOverlayClick={() => setIsNavigationOpened(false)} isOpened={isNavigationOpened} />
         </>
     );
 }

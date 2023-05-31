@@ -4,7 +4,7 @@ import './Techs.css';
 function Techs() {
     const tabs = ['HTML', 'CSS', 'JS', 'React', 'Git', 'Express.js', 'mongoDB']
     return (
-        <div className="techs">
+        <section className="techs">
             <h2 className="techs__title">Технологии</h2 >
             <div className="techs__text-container">
                 <h3 className="techs__subtitle">7 технологий</h3>
@@ -17,7 +17,7 @@ function Techs() {
                     </div>
                 ))}
             </div>
-        </div>
+        </section>
     );
 }
 

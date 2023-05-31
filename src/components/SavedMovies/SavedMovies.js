@@ -11,15 +11,17 @@ import './SavedMovies.css';
 function SavedMovies() {
     const [isNavigationOpened, setIsNavigationOpened] = useState(false);
     return (
-        <section>
+        <>
             <Header onBurgerButtonClick={() => setIsNavigationOpened(true)} isLogged={true} />
-            <SearchForm />
-            <MoviesCardList cards={cardsData} isSavedMode />
-            <div className="savedMovies"></div>
+            <main>
+                <SearchForm />
+                <MoviesCardList cards={cardsData} isSavedMode />
+                <div className="savedMovies"></div>
+            </main>
             <Footer />
             <Navigation onCloseButtonClick={() => setIsNavigationOpened(false)} isOpened={isNavigationOpened} />
             <Overlay onOverlayClick={() => setIsNavigationOpened(false)} isOpened={isNavigationOpened} />
-        </section>
+        </>
     );
 }
 

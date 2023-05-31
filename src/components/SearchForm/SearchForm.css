@@ -1,21 +1,21 @@
-.searchForm {
+.search-form {
   background-color: #ffffff;
   padding: 144px 70px 48px 70px;
 }
 
 @media screen and (max-width: 769px) {
-  .searchForm {
+  .search-form {
     padding: 86px 30px 62px 30px;
   }
 }
 
 @media screen and (max-width: 530px) {
-  .searchForm {
+  .search-form {
     padding: 98px 14px 50px 14px;
   }
 }
 
-.searchForm__button-input-container {
+.search-form__button-input-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -24,7 +24,7 @@
   padding-bottom: 15px;
 }
 
-.searchForm__input-container {
+.search-form__input-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -35,17 +35,17 @@
   width: 100%;
 }
 
-.searchForm__magnifier {
+.search-form__magnifier {
   width: 34px;
 }
 
 @media screen and (max-width: 530px) {
-  .searchForm__magnifier {
+  .search-form__magnifier {
     display: none;
   }
 }
 
-.searchForm__input-movie {
+.search-form__input-movie {
   font-style: normal;
   font-weight: 500;
   font-size: 28px;
@@ -57,13 +57,13 @@
 }
 
 @media screen and (max-width: 530px) {
-  .searchForm__input-movie {
+  .search-form__input-movie {
     font-size: 18px;
     line-height: 22px;
   }
 }
 
-.searchForm__button {
+.search-form__button {
   background-image: url("../../images/magnifier_button.svg");
   background-repeat: no-repeat;
   background-position: center;
@@ -77,11 +77,11 @@
   transition: opacity 0.4s;
 }
 
-.searchForm__button:hover {
+.search-form__button:hover {
   opacity: 0.8;
 }
 
-.searchForm__filterCheckbox {
+.search-form__filterCheckbox {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -90,12 +90,12 @@
 }
 
 @media screen and (max-width: 530px) {
-  .searchForm__filterCheckbox {
+  .search-form__filterCheckbox {
     padding-top: 43px;
   }
 }
 
-.searchForm__genre {
+.search-form__genre {
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -106,7 +106,7 @@
 }
 
 @media screen and (max-width: 530px) {
-  .searchForm__genre {
+  .search-form__genre {
     font-size: 11px;
   }
 }

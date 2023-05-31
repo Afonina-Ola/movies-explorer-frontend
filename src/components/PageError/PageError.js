@@ -4,12 +4,12 @@ import './PageError.css';
 
 function PageError() {
   return (
-    <div className="pageError">
-      <div className="pageError__error-groupe">
-        <p className="pageError__error-number">404</p>
-        <p className="pageError__error-message">Страница не найдена</p>
+    <div className="page-error">
+      <div className="page-error__error-groupe">
+        <p className="page-error__error-number">404</p>
+        <p className="page-error__error-message">Страница не найдена</p>
       </div>
-      <NavLink to="/" className="pageError__link">Назад</NavLink>
+      <NavLink to="/" className="page-error__link">Назад</NavLink>
     </div>
   );
 }

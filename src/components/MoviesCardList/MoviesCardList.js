@@ -4,7 +4,7 @@ import './MoviesCardList.css';
 
 function MoviesCardList({ cards, isSavedMode }) {
     return (
-        <div className="movies-card-list">
+        <section className="movies-card-list">
             {!isSavedMode &&
                 <>
                     {cards.map(({ isSaved, title, time, cardImage, id }) => (
@@ -16,7 +16,7 @@ function MoviesCardList({ cards, isSavedMode }) {
                     <MoviesCard key={id} isSaved={isSaved} title={title} time={time} cardImage={cardImage} />
                 ))}
             </>}
-        </div>
+        </section>
     );
 }
 

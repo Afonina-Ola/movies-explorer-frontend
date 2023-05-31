@@ -6,8 +6,8 @@ function FilterCheckbox() {
   // хук useState применен временно для демонстрации работы чекбокса
   const [active, setActive] = useState();
   return (
-    <button type='button' onClick={() => setActive(!active)} className="filterCheckbox__container">
-      <div className={active ? 'filterCheckbox__circle filterCheckbox__circle_active' : "filterCheckbox__circle"}></div>
+    <button type='button' onClick={() => setActive(!active)} className="filter-checkbox__container">
+      <div className={active ? 'filter-checkbox__circle filter-checkbox__circle_active' : "filter-checkbox__circle"}></div>
     </button >
   );
 }

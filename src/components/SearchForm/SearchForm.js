@@ -5,17 +5,17 @@ import magnifier from '../../images/magnifier.svg';
 
 function SearchForm() {
     return (
-        <form className="searchForm">
-            <div className="searchForm__button-input-container">
-                <fieldset className="searchForm__input-container">
-                    <img src={magnifier} className="searchForm__magnifier" alt='лупа' />
-                    <input required type="text" className="searchForm__input-movie" name="name" placeholder="Фильм" />
+        <form className="search-form">
+            <div className="search-form__button-input-container">
+                <fieldset className="search-form__input-container">
+                    <img src={magnifier} className="search-form__magnifier" alt='лупа' />
+                    <input required type="text" className="search-form__input-movie" name="name" placeholder="Фильм" />
                 </fieldset>
-                <button type="submit" className="searchForm__button"></button>
+                <button type="submit" className="search-form__button"></button>
             </div>
-            <div className="searchForm__filterCheckbox">
+            <div className="search-form__filterCheckbox">
                 <FilterCheckbox />
-                <p className="searchForm__genre">Короткометражки</p>
+                <p className="search-form__genre">Короткометражки</p>
             </div>
         </form>
     );

@@ -4,24 +4,22 @@
 
 @media screen and (max-width: 768px) {
   .navigation {
-    display: flex;
+    display: none;
     width: 68%;
     height: 100vh;
     flex-direction: column;
     justify-content: space-between;
     position: absolute;
     top: 0;
-    right: 0;
-    transform: translateX(100%);
-    z-index: 10;
-    transition: transform 0.3s ease-out;
+    right: 0;   
+    z-index: 10;    
     background-color: #fff;
     align-items: center;
     padding: 160px 0 90px;
   }
 
   .navigation_opened {
-    transform: translateX(0);
+    display: flex;
   }
 
   .navigation__close-button {

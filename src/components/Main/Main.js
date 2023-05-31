@@ -12,17 +12,19 @@ import Overlay from '../Overlay/Overlay.js';
 function Main() {
   const [isNavigationOpened, setIsNavigationOpened] = useState(false);
   return (
-    <main>
+    <>
       <Header onBurgerButtonClick={() => setIsNavigationOpened(true)} isLogged={false} />
-      <Promo />
-      <AboutProject />
-      <Techs />
-      <AboutMe />
-      <Portfolio />
-      <Footer />
-      <Navigation onCloseButtonClick={() => setIsNavigationOpened(false)} isOpened={isNavigationOpened} />
-      <Overlay onOverlayClick={() => setIsNavigationOpened(false)} isOpened={isNavigationOpened} />
-    </main>
+      <main>
+        <Promo />
+        <AboutProject />
+        <Techs />
+        <AboutMe />
+        <Portfolio />
+      </main>
+      <Footer />     
+        <Navigation onCloseButtonClick={() => setIsNavigationOpened(false)} isOpened={isNavigationOpened} />
+        <Overlay onOverlayClick={() => setIsNavigationOpened(false)} isOpened={isNavigationOpened} />      
+    </>
   );
 }
 

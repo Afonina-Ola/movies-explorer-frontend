@@ -5,9 +5,9 @@ import smile from '../../images/smile.svg';
 
 function Login({ errorMessage }) {
   return (
-    <div className="login">
+    <main className="login">
       <form className="login__form" >
-        <img src={smile} className="login__smile" alt='улыбающийся смайл' />
+        <NavLink to="/" className="login__smile-link"><img src={smile} className="login__smile" alt='улыбающийся смайл' /></NavLink>
         <p className="login__greeting">Рады видеть!</p>
         <fieldset className="login__form-input-container">
           <h3 className="login__input-title">E-mail</h3>
@@ -24,7 +24,7 @@ function Login({ errorMessage }) {
         </div>
       </form>
       <NavLink to="/signup" className="login__link">Ещё не зарегистрированы?<span class="login__link-entrance">Регистрация</span></NavLink>
-    </div>
+    </main>
   );
 }
 

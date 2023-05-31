@@ -1,11 +1,10 @@
 import React from 'react';
-import { Link, Route } from 'react-router-dom';
 import './AboutMe.css';
 import photoStudent from '../../images/photo_student.png';
 
 function AboutMe() {
     return (
-        <div className="about-me ">
+        <section className="about-me ">
             <h2 className="about-me__title">Студент</h2 >
             <div className="about-me__profile-container ">
                 <div className="about-me__profile-container-text-link" >
@@ -18,7 +17,7 @@ function AboutMe() {
                 </div>
                 <img src={photoStudent} className="about-me__photo" alt='фото студента' />
             </div>
-        </div>
+        </section>
     );
 }
 
