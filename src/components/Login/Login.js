@@ -23,7 +23,7 @@ function Login({ errorMessage }) {
           <button type="submit" className="login__button">Войти</button>
         </div>
       </form>
-      <NavLink to="/signup" className="login__link">Ещё не зарегистрированы?<span class="login__link-entrance">Регистрация</span></NavLink>
+      <NavLink to="/signup" className="login__link">Ещё не зарегистрированы?<span className="login__link-entrance">Регистрация</span></NavLink>
     </main>
   );
 }

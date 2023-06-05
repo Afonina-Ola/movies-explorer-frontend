@@ -6,9 +6,22 @@ import './Profile.css';
 
 function Profile({ errorMessage }) {
     const [isNavigationOpened, setIsNavigationOpened] = useState(false);
+
+    const body = document.querySelector('.body');
+
+    const openNavigation = () => {
+        body.classList.add('body_without-scroll')
+        setIsNavigationOpened(true);
+    }
+
+    const closeNavigation = () => {
+        body.classList.remove('body_without-scroll')
+        setIsNavigationOpened(false)
+    }
+
     return (
         <>
-            <Header onBurgerButtonClick={() => setIsNavigationOpened(true)} isLogged={true} />
+            <Header onBurgerButtonClick={openNavigation} isLogged={true} />
             <main className="profile">
                 <form className="profile__container">
                     <p className="profile__greeting">Привет, Виталий!</p>
@@ -32,8 +45,8 @@ function Profile({ errorMessage }) {
                     <button type="submit" className="profile__button-exit">Выйти из аккаунта</button>
                 </form>
             </main>
-            <Navigation onCloseButtonClick={() => setIsNavigationOpened(false)} isOpened={isNavigationOpened} />
-            <Overlay onOverlayClick={() => setIsNavigationOpened(false)} isOpened={isNavigationOpened} />
+            <Navigation onCloseButtonClick={closeNavigation} isOpened={isNavigationOpened} />
+            <Overlay onOverlayClick={closeNavigation} isOpened={isNavigationOpened} />
         </>
     );
 }

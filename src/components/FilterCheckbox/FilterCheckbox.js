@@ -7,7 +7,7 @@ function FilterCheckbox() {
   const [active, setActive] = useState();
   return (
     <button type='button' onClick={() => setActive(!active)} className="filter-checkbox__container">
-      <div className={active ? 'filter-checkbox__circle filter-checkbox__circle_active' : "filter-checkbox__circle"}></div>
+      <span className={active ? 'filter-checkbox__circle filter-checkbox__circle_active' : "filter-checkbox__circle"}></span>
     </button >
   );
 }

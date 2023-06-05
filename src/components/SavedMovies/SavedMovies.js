@@ -10,17 +10,30 @@ import './SavedMovies.css';
 
 function SavedMovies() {
     const [isNavigationOpened, setIsNavigationOpened] = useState(false);
+
+    const body = document.querySelector('.body');
+
+    const openNavigation = () => {
+        body.classList.add('body_without-scroll')
+        setIsNavigationOpened(true);
+    }
+
+    const closeNavigation = () => {
+        body.classList.remove('body_without-scroll')
+        setIsNavigationOpened(false)
+    }
+
     return (
         <>
-            <Header onBurgerButtonClick={() => setIsNavigationOpened(true)} isLogged={true} />
+            <Header onBurgerButtonClick={openNavigation} isLogged={true} />
             <main>
                 <SearchForm />
                 <MoviesCardList cards={cardsData} isSavedMode />
                 <div className="savedMovies"></div>
             </main>
             <Footer />
-            <Navigation onCloseButtonClick={() => setIsNavigationOpened(false)} isOpened={isNavigationOpened} />
-            <Overlay onOverlayClick={() => setIsNavigationOpened(false)} isOpened={isNavigationOpened} />
+            <Navigation onCloseButtonClick={closeNavigation} isOpened={isNavigationOpened} />
+            <Overlay onOverlayClick={closeNavigation} isOpened={isNavigationOpened} />
         </>
     );
 }

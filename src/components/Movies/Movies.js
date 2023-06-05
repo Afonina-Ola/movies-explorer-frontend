@@ -19,9 +19,22 @@ function Movies() {
             setIsLoading(false)
         }, 2000)
     }
+
+    const body = document.querySelector('.body');
+
+    const openNavigation = () => {
+        body.classList.add('body_without-scroll')
+        setIsNavigationOpened(true);
+    }
+
+    const closeNavigation = () => {
+        body.classList.remove('body_without-scroll')
+        setIsNavigationOpened(false)
+    }
+
     return (
         <>
-            <Header onBurgerButtonClick={() => setIsNavigationOpened(true)} isLogged={true} />
+            <Header onBurgerButtonClick={openNavigation} isLogged={true} />
             <main>
                 <SearchForm />
                 <MoviesCardList cards={cardsData} />
@@ -31,8 +44,8 @@ function Movies() {
                 {isLoading && <Preloader />}
             </main>
             <Footer />
-            <Navigation onCloseButtonClick={() => setIsNavigationOpened(false)} isOpened={isNavigationOpened} />
-            <Overlay onOverlayClick={() => setIsNavigationOpened(false)} isOpened={isNavigationOpened} />
+            <Navigation onCloseButtonClick={closeNavigation} isOpened={isNavigationOpened} />
+            <Overlay onOverlayClick={closeNavigation} isOpened={isNavigationOpened} />
         </>
     );
 }

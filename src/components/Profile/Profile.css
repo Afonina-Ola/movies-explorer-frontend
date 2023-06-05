@@ -3,7 +3,7 @@
   height: 100vh;
   padding-top: 148px;
   padding-bottom: 70px;
-  background-color: #FFFFF;
+  background-color: #fff;
   position: relative;
   z-index: 1;
 }
@@ -125,6 +125,7 @@
 .profile__button-exit:hover {
   opacity: 0.8;
 }
+
 .profile__error-message {
   font-style: normal;
   font-weight: 400;

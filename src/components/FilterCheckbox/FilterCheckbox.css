@@ -5,7 +5,7 @@
   width: 36px;
   height: 20px;
   padding-left: 2px;
-  padding-right: 2px;
+  padding-right: 2px; 
 }
 
 .filter-checkbox__circle {
@@ -16,6 +16,7 @@
   border: 1px solid #ffffff;
   transform: translateX(0);
   transition: translate 0.3s ease-out, background-color 0.3s ease-out;
+  display: block;
 }
 
 .filter-checkbox__circle_active {

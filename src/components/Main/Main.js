@@ -11,9 +11,22 @@ import Overlay from '../Overlay/Overlay.js';
 
 function Main() {
   const [isNavigationOpened, setIsNavigationOpened] = useState(false);
+  
+  const body = document.querySelector('.body');
+
+  const openNavigation = () => {
+    body.classList.add('body_without-scroll')
+    setIsNavigationOpened(true);
+  }
+
+  const closeNavigation = () => {
+    body.classList.remove('body_without-scroll')
+    setIsNavigationOpened(false)
+  }
+
   return (
     <>
-      <Header onBurgerButtonClick={() => setIsNavigationOpened(true)} isLogged={false} />
+      <Header onBurgerButtonClick={openNavigation} isLogged={true} />
       <main>
         <Promo />
         <AboutProject />
@@ -21,9 +34,9 @@ function Main() {
         <AboutMe />
         <Portfolio />
       </main>
-      <Footer />     
-        <Navigation onCloseButtonClick={() => setIsNavigationOpened(false)} isOpened={isNavigationOpened} />
-        <Overlay onOverlayClick={() => setIsNavigationOpened(false)} isOpened={isNavigationOpened} />      
+      <Footer />
+      <Navigation onCloseButtonClick={closeNavigation} isOpened={isNavigationOpened} />
+      <Overlay onOverlayClick={closeNavigation} isOpened={isNavigationOpened} />
     </>
   );
 }
