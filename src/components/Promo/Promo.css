@@ -1,0 +1,149 @@
+.promo {
+  display: flex;
+  background-color: #5c5c5c;
+  flex-direction: row;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
+  padding-left: 70px;
+  padding-right: 70px;
+  padding-top: 74px;
+}
+
+@media screen and (max-width: 810px) {
+  .promo {
+    flex-direction: column;
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .promo {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+}
+
+.promo__text-container {
+  display: block;
+}
+
+@media screen and (max-width: 810px) {
+  .promo__text-container {
+    order: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.promo__title {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 58px;
+  color: #ffffff;
+  margin-top: 75px;
+  margin-bottom: 0;
+  max-width: 640px;
+}
+
+@media screen and (max-width: 810px) {
+  .promo__title {
+    width: 100%;
+    font-size: 40px;
+    line-height: 50px;
+    margin-top: 48px;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .promo__title {
+    font-size: 30px;
+    line-height: 38px;
+    margin-top: 44px;
+  }
+}
+
+.promo__info-text {
+  width: 310px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  color: #ffffff;
+  opacity: 0.5;
+  margin-top: 36px;
+  margin-bottom: 0;
+}
+
+@media screen and (max-width: 810px) {
+  .promo__info-text {
+    width: 250px;
+    font-size: 13px;
+    line-height: 16px;
+    margin-top: 22px;
+    text-align: center;
+  }
+}
+
+.promo__link-container {
+  display: flex;
+  width: max-content;
+  margin-bottom: 75px;
+  padding: 10px 20px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.6);
+  border: 1px solid;
+  border-radius: 3px;
+  background-color: transparent;
+  text-decoration: none;
+  opacity: 1;
+  transition: opacity 0.4s;
+  margin-top: 156px;
+}
+
+@media screen and (max-width: 810px) {
+  .promo__link-container {
+    margin-top: 92px;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .promo__link-container {
+    margin-top: 80px;
+    margin-bottom: 30px;
+  }
+}
+
+.promo__link-container:hover {
+  opacity: 0.7;
+}
+
+.promo__logo {
+  width: 310px;
+  height: 304px;
+  margin-top: 75px;
+}
+
+@media screen and (max-width: 810px) {
+  .promo__logo {
+    order: 1;
+    align-self: center;
+    margin-top: 140px;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .promo__logo {
+    width: 210px;
+    height: 206px;
+    margin-top: 70px;
+  }
+}

@@ -1,0 +1,16 @@
+.root {
+  font-family: "Inter", "Arial", sans-serif;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.body {
+  overflow: auto;
+}
+
+.body_without-scroll {
+  overflow: hidden;
+}

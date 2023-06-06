@@ -1,0 +1,234 @@
+.about-project {
+  display: block;
+  background-color: #ffffff;
+  padding-left: 70px;
+  padding-right: 70px;
+}
+
+@media screen and (max-width: 769px) {
+  .about-project {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .about-project {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+}
+
+.about-project__title {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 27px;
+  color: #000000;
+  margin-top: 110px;
+  margin-bottom: 23px;
+}
+
+@media screen and (max-width: 769px) {
+  .about-project__title {
+    margin-top: 90px;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .about-project__title {
+    margin-top: 70px;
+    font-size: 18px;
+    line-height: 22px;
+    margin-bottom: 28px;
+  }
+}
+
+.about-project__text-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-top: #000000 1px solid;
+  }
+
+  
+
+@media screen and (max-width: 390px) {
+  .about-project__text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+}
+
+.about-project__text-item {
+  display: block;
+  width: 550px;
+  padding-right: 20px;
+}
+
+@media screen and (max-width: 769px) {
+  .about-project__text-item {
+    padding-right: 15px;
+     }
+}
+
+@media screen and (max-width: 390px) {
+  .about-project__text-item {
+    padding-right: 0;
+     }
+}
+
+.about-project__text-item:last-of-type {
+  padding-left: 20px;
+  padding-right: 0;
+   }
+
+   @media screen and (max-width: 769px) {
+    .about-project__text-item:last-of-type {
+      padding-left: 15px;      
+       }
+  }
+
+  @media screen and (max-width: 390px) {
+    .about-project__text-item:last-of-type {
+      padding-left: 0;    
+       }
+  }
+
+@media screen and (max-width: 769px) {
+  .about-project__text-item {
+    width: 319px;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .about-project__text-item {
+    width: 100%;
+  }
+}
+
+.about-project__subtitle {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  color: #000000;
+  margin-top: 70px;
+ }
+
+@media screen and (max-width: 390px) {
+  .about-project__subtitle {
+    font-size: 18px;
+    line-height: 22px;
+    margin-top: 60px;
+  }
+}
+
+.about-project__info-text {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #000000;
+  margin-top: 26px;
+  margin-bottom: 0;
+}
+
+@media screen and (max-width: 769px) {
+  .about-project__info-text {
+    font-size: 12px;
+    line-height: 18px;
+    margin-top: 22px;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .about-project__info-text {
+    font-size: 11px;
+    line-height: 16px;
+    margin-top: 16px;
+  }
+}
+
+.about-project__scheme {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 110px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: #000000;
+}
+
+@media screen and (max-width: 769px) {
+  .about-project__scheme {
+    margin-top: 93px;
+    margin-bottom: 0;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .about-project__scheme {
+    margin-top: 60px;
+    font-size: 11px;
+    line-height: 13px;
+  }
+}
+
+.about-project__scheme-back-end {
+  width: 20%;
+  background-color: #2be080;
+  padding: 9px 0px;
+  margin: 0;
+}
+
+.about-project__scheme-front-end {
+  width: 80%;
+  background-color: #f2f2f2;
+  padding: 9px 0px;
+  margin: 0;
+}
+
+.about-project__scheme-text {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 110px;
+  margin-top: 14px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: #a0a0a0;
+}
+
+@media screen and (max-width: 769px) {
+  .about-project__scheme-text {
+    margin-bottom: 90px;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 13px;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .about-project__scheme-text {
+    margin-bottom: 70px;
+  }
+}
+
+.about-project__scheme-back-end-text {
+  width: 20%;
+  margin: 0;
+}
+
+.about-project__scheme-front-end-text {
+  width: 80%;
+  margin: 0;
+}
