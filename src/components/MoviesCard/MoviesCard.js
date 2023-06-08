@@ -11,7 +11,7 @@ function MoviesCard({ isSaved, title, time, cardImage }) {
         </div>
         <div className={isSaved ? "movies-card__flag movies-card__flag_active" : "movies-card__flag"} ></div>
       </div>
-      <img src={cardImage} className="movies-card__image" alt='постер фильма' />
+      <img src={`https://api.nomoreparties.co${cardImage}`} className="movies-card__image" alt='постер фильма' />
     </div>
   );
 }
