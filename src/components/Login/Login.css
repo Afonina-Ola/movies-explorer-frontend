@@ -118,6 +118,11 @@
   opacity: 0.8;
 }
 
+.login__button:disabled {
+  background-color: #F8F8F8;
+  color: #C2C2C2;
+}
+
 .login__link {
   margin: 16px auto 0;
   font-style: normal;
