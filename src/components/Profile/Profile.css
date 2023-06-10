@@ -109,8 +109,8 @@
 }
 
 .profile__button-editing:disabled {
-  background-color: #F8F8F8;
-  color: #C2C2C2;
+  background-color: #f8f8f8;
+  color: #c2c2c2;
 }
 
 .profile__button-exit {
@@ -125,6 +125,7 @@
   background-color: transparent;
   opacity: 1;
   transition: opacity 0.4s;
+  cursor: pointer;
 }
 
 .profile__button-exit:hover {

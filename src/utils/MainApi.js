@@ -1,6 +1,6 @@
 export const BASE_URL = "https://api.homamovie.nomoredomains.monster";
 
-export const addMovie = (
+export const addMovie = ({
   country,
   director,
   duration,
@@ -11,11 +11,14 @@ export const addMovie = (
   thumbnail,
   movieId,
   nameRU,
-  nameEN
-) => {
-  return fetch(`${BASE_URL}`, {
+  nameEN,
+}) => {
+  const token = localStorage.getItem("token");
+
+  return fetch(`${BASE_URL}/movies`, {
     method: "POST",
     headers: {
+      authorization: `Bearer ${token}`,
       Accept: "application/json",
       "Content-Type": "application/json",
     },
@@ -68,6 +71,19 @@ export const getUserData = () => {
     },
   }).then(checkResponse);
 };
+
+export const getMovies = () => {
+  const token = localStorage.getItem("token");
+  return fetch(`${BASE_URL}/movies`, {
+    method: "GET",
+    headers: {
+      authorization: `Bearer ${token}`,
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+  }).then(checkResponse);
+};
+
 export const editUserData = ({ email, name }) => {
   const token = localStorage.getItem("token");
   return fetch(`${BASE_URL}/users/me`, {
