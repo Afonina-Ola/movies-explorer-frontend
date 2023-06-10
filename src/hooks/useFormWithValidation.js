@@ -8,6 +8,12 @@ export function useFormWithValidation() {
   const [errors, setErrors] = React.useState({});
   const [isValid, setIsValid] = React.useState(false);
 
+  console.log(values);
+
+  const handleDefaultValues = (values) => {
+    setValues(values);
+  };
+
   const handleChange = (event) => {
     const target = event.target;
     const name = target.name;
@@ -16,6 +22,7 @@ export function useFormWithValidation() {
     if (!value.length) {
       setErrors({ ...errors, [name]: "Заполните поле" });
       setIsValid(false);
+      setValues({ ...values, [name]: value });
       return;
     } else {
       setErrors({ ...errors, [name]: "" });
@@ -53,5 +60,12 @@ export function useFormWithValidation() {
     [setValues, setErrors, setIsValid]
   );
 
-  return { values, handleChange, errors, isValid, resetForm };
+  return {
+    values,
+    handleChange,
+    errors,
+    isValid,
+    resetForm,
+    handleDefaultValues,
+  };
 }

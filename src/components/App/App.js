@@ -9,14 +9,24 @@ import Profile from "../Profile/Profile.js";
 import Login from "../Login/Login.js";
 import Register from "../Register/Register.js";
 import PageError from "../PageError/PageError.js";
-import { register, login } from "../../utils/MoviesAuth.js";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import {
+  register,
+  login,
+  checkToken,
+  getUserData,
+  editUserData,
+} from "../../utils/MainApi.js";
 
 function App() {
   const history = useHistory();
+
   const [registerError, setRegisterError] = useState("");
   const [loginError, setLoginError] = useState("");
+  const [profileEditError, setProfileEditError] = useState("");
   const [loggedIn, setLoggedIn] = useState(false);
-  const [userEmail, setUserEmail] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [currentUser, setCurrentUser] = useState({});
 
   const handleRegister = async (e, email, password, name) => {
     setRegisterError("");
@@ -26,6 +36,9 @@ function App() {
         return alert("Нужно заполнить обязательные поля");
       }
       const res = await register({ email, password, name });
+      if (res) {
+        handleLogin(e, email, password);
+      }
     } catch (err) {
       setRegisterError(err);
       console.error(err);
@@ -41,10 +54,9 @@ function App() {
       }
       const res = await login({ email, password });
       if (res) {
-        // localStorage.setItem('token', res.token);
+        localStorage.setItem("token", res.token);
         setLoggedIn(true);
-        setUserEmail(email);
-        // history.push('/');
+        history.push("/movies");
       }
     } catch (err) {
       setLoginError(err);
@@ -52,34 +64,82 @@ function App() {
     }
   };
 
+  const handleProfileFormSubmit = (e, userData) => {
+    e.preventDefault();
+    editUserData(userData)
+      .then((data) => {
+        setCurrentUser(data);
+      })
+      .catch((err) => {
+        setProfileEditError(err);
+      });
+  };
+
+  // Проверка токена
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      checkToken(token)
+        .then((data) => {
+          setLoggedIn(true);
+        })
+        .catch((err) => console.log(err))
+        .finally(() => {
+          setLoading(false);
+        });
+    } else {
+      setLoading(false);
+    }
+  }, []);
+
+  // Данные пользователя
+  useEffect(() => {
+    getUserData()
+      .then((data) => {
+        setCurrentUser(data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  if (loading) {
+    return "...Loading";
+  }
+
   return (
     <>
-      <Switch>
-        <Route exact path="/">
-          <Main />
-        </Route>
-        <Route exact path="/movies">
-          <Movies />
-        </Route>
-        <Route exact path="/saved-movies">
-          <SavedMovies />
-        </Route>
-        <Route exact path="/profile">
-          <Profile errorMessage={"текст ошибки"} />
-        </Route>
-        <Route exact path="/signin">
-          <Login errorMessage={loginError} handleLogin={handleLogin} />
-        </Route>
-        <Route exact path="/signup">
-          <Register
-            errorMessage={registerError}
-            handleRegister={handleRegister}
-          />
-        </Route>
-        <Route exact path="*">
-          <PageError />
-        </Route>
-      </Switch>
+      <CurrentUserContext.Provider value={currentUser}>
+        <Switch>
+          <Route exact path="/">
+            <Main loggedIn={loggedIn} />
+          </Route>
+          <Route exact path="/movies">
+            <Movies loggedIn={loggedIn} />
+          </Route>
+          <Route exact path="/saved-movies">
+            <SavedMovies loggedIn={loggedIn} />
+          </Route>
+          <Route exact path="/profile">
+            <Profile
+              onProfileFormSubmit={handleProfileFormSubmit}
+              errorMessage={profileEditError}
+              setLoggedIn={setLoggedIn}
+              loggedIn={loggedIn}
+            />
+          </Route>
+          <Route exact path="/signin">
+            <Login errorMessage={loginError} handleLogin={handleLogin} />
+          </Route>
+          <Route exact path="/signup">
+            <Register
+              errorMessage={registerError}
+              handleRegister={handleRegister}
+            />
+          </Route>
+          <Route exact path="*">
+            <PageError />
+          </Route>
+        </Switch>
+      </CurrentUserContext.Provider>
     </>
   );
 }

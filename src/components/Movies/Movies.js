@@ -9,8 +9,9 @@ import Overlay from "../Overlay/Overlay.js";
 import { getAllMovies } from "../../utils/MoviesApi.js";
 import useCurrentWidth from "../../hooks/useCurrentWidth.js";
 import "./Movies.css";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext.js";
 
-function Movies() {
+function Movies({loggedIn}) {
   const [isLoading, setIsLoading] = useState();
   const [isNavigationOpened, setIsNavigationOpened] = useState(false);
   const [searchFormValue, setSearchFormValue] = useState("");
@@ -124,9 +125,11 @@ function Movies() {
     return () => {};
   }, []);
 
+  const currentUser = React.useContext(CurrentUserContext);
+
   return (
     <>
-      <Header onBurgerButtonClick={openNavigation} isLogged={true} />
+      <Header onBurgerButtonClick={openNavigation} isLogged={loggedIn} />
       <main>
         <SearchForm
           searchFormInputValue={searchFormValue}

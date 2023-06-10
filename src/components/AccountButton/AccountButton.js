@@ -1,9 +1,9 @@
 import React from 'react';
 import './AccountButton.css';
 
-function AccounButton({ className }) {
+function AccounButton({ className, onClick }) {
     return (
-        <button className={`account-button ${className}`}>Аккаунт</button>
+        <button onClick={onClick} className={`account-button ${className}`}>Аккаунт</button>
     );
 }
 
