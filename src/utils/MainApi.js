@@ -35,7 +35,7 @@ export const addMovie = ({
       nameRU,
       nameEN,
     }),
-  });
+  }).then(checkResponse);
 };
 
 export const register = ({ email, password, name }) => {
@@ -84,6 +84,7 @@ export const getMovies = () => {
   }).then(checkResponse);
 };
 
+// запрос на обновление данных пользователя
 export const editUserData = ({ email, name }) => {
   const token = localStorage.getItem("token");
   return fetch(`${BASE_URL}/users/me`, {
@@ -104,6 +105,19 @@ export const checkToken = (token) => {
       Accept: "application/json",
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
+    },
+  }).then(checkResponse);
+};
+
+// запрос на удаление фильма
+export const deleteMoviesCard = (id) => {
+  const token = localStorage.getItem("token");
+  return fetch(`${BASE_URL}/movies/${id}`, {
+    method: "DELETE",
+    headers: {
+      authorization: `Bearer ${token}`,
+      Accept: "application/json",
+      "Content-Type": "application/json",
     },
   }).then(checkResponse);
 };

@@ -62,6 +62,10 @@
   background-image: url("../../images/flag_save.svg");
 }
 
+.movies-card__flag_delete {
+  background-image: url("../../images/delete-card-icon.svg");
+}
+
 .movies-card__image {
   width: 100%;
   object-fit: cover;

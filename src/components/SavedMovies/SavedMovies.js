@@ -1,15 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Footer from "../Footer/Footer.js";
 import Header from "../Header/Header.js";
 import SearchForm from "../SearchForm/SearchForm.js";
 import MoviesCardList from "../MoviesCardList/MoviesCardList.js";
 import Navigation from "../Navigation/Navigation.js";
 import Overlay from "../Overlay/Overlay.js";
-import { cardsData } from "../../data.js";
+import { getMovies } from "../../utils/MainApi.js";
+import filterFilmsWithDuration from "../../utils/filterFilmsWithDuration.js";
 import "./SavedMovies.css";
 
 function SavedMovies({ loggedIn }) {
   const [isNavigationOpened, setIsNavigationOpened] = useState(false);
+  const [searchFormValue, setSearchFormValue] = useState("");
+  const [isShortFilm, setIsShortFilm] = useState(false);
+  const [savedFilms, setSavedFilms] = useState([]);
+  const [updateSavedFilms, setUpdateSavedFilms] = useState(false);
+  const [filteredMovies, setFilteredMovies] = useState([]);
+
+  useEffect(() => {
+    getMovies()
+      .then((data) => {
+        setSavedFilms(data);
+      })
+      .catch((err) => console.log(err));
+  }, [updateSavedFilms]);
 
   const body = document.querySelector(".body");
 
@@ -18,6 +32,35 @@ function SavedMovies({ loggedIn }) {
     setIsNavigationOpened(true);
   };
 
+  const handleSearchFormInputChange = (event) => {
+    setSearchFormValue(event.target.value);
+  };
+
+  const handleSearchFormSubmit = (event) => {
+    event.preventDefault();
+    // Если поиск пустой показываем все сохраненные фильмы
+    if (searchFormValue.length === 0) {
+      setFilteredMovies([]);
+    }
+
+    let filtered = [];
+
+    if (isShortFilm) {
+      filtered = filterFilmsWithDuration(savedFilms).filter((movie) =>
+        movie.nameRU.toLowerCase().includes(searchFormValue.toLowerCase())
+      );
+    } else {
+      filtered = savedFilms.filter((movie) =>
+        movie.nameRU.includes(searchFormValue)
+      );
+    }
+    setFilteredMovies(filtered);
+  };
+
+  const handleFilterCheckboxClick = () => {
+    localStorage.setItem("is-short-film", !isShortFilm);
+    setIsShortFilm(!isShortFilm);
+  };
   const closeNavigation = () => {
     body.classList.remove("body_without-scroll");
     setIsNavigationOpened(false);
@@ -27,8 +70,24 @@ function SavedMovies({ loggedIn }) {
     <>
       <Header onBurgerButtonClick={openNavigation} isLogged={loggedIn} />
       <main>
-        <SearchForm />
-        <MoviesCardList cards={cardsData} isSavedMode />
+        <SearchForm
+          searchFormInputValue={searchFormValue}
+          onSearchFormInputChange={handleSearchFormInputChange}
+          onSearchFormSubmit={handleSearchFormSubmit}
+          filterCheckboxSelected={isShortFilm}
+          onFilterCheckboxClick={handleFilterCheckboxClick}
+        />
+        <MoviesCardList
+          movies={filteredMovies.length ? filteredMovies : savedFilms}
+          isSavedMode
+          isSavedPage={true}
+          searchFormInputValue={searchFormValue}
+          onSearchFormInputChange={handleSearchFormInputChange}
+          onSearchFormSubmit={handleSearchFormSubmit}
+          filterCheckboxSelected={isShortFilm}
+          onFilterCheckboxClick={handleFilterCheckboxClick}
+          setUpdateSavedFilms={setUpdateSavedFilms}
+        />
         <div className="savedMovies"></div>
       </main>
       <Footer />

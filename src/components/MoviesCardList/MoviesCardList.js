@@ -1,39 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import MoviesCard from "../MoviesCard/MoviesCard";
-import { getMovies } from "../../utils/MainApi";
 import "./MoviesCardList.css";
 
-function MoviesCardList({ cards, isSavedMode }) {
-  const [savedFilms, setSavedFilms] = useState([]);
-  const [savedFilmsIds, setSavedFilmsIds] = useState([]);
-
-  useEffect(() => {
-    getMovies()
-      .then((data) => {
-        setSavedFilms(data);
-        const ids = data.map((film) => film.movieId);
-        setSavedFilmsIds(ids);
-      })
-      .catch((err) => console.log(err));
-  }, []);
-
-  let allMovies = [];
-  if (cards) {
-    allMovies = cards.map((movie) => {
-      savedFilmsIds.includes(movie.id)
-        ? (movie.isSaved = true)
-        : (movie.isSaved = false);
-      return movie;
-    });
-  }
-
-  console.log(savedFilmsIds);
-
+function MoviesCardList({
+  movies,
+  isSavedMode,
+  setUpdateSavedFilms,
+  isSavedPage,
+}) {
   return (
     <section className="movies-card-list">
-      {!isSavedMode && savedFilms.length && cards && cards.length && (
+      {movies && movies.length && (
         <>
-          {allMovies.map(
+          {movies.map(
             ({
               isSaved,
               country,
@@ -46,13 +25,19 @@ function MoviesCardList({ cards, isSavedMode }) {
               nameRU,
               nameEN,
               id,
+              baseId,
+              _id,
             }) => (
               <MoviesCard
                 key={id}
                 isSaved={isSaved}
                 nameRU={nameRU}
                 duration={duration}
-                image={`https://api.nomoreparties.co${image.url}`}
+                image={
+                  isSavedMode
+                    ? image
+                    : `https://api.nomoreparties.co${image.url}`
+                }
                 title={nameRU}
                 time={duration}
                 country={country}
@@ -62,44 +47,9 @@ function MoviesCardList({ cards, isSavedMode }) {
                 trailerLink={trailerLink}
                 movieId={id}
                 nameEN={nameEN}
-              />
-            )
-          )}
-        </>
-      )}
-      {isSavedMode && savedFilms && (
-        <>
-          {savedFilms.map(
-            ({
-              isSaved,
-              country,
-              director,
-              duration,
-              year,
-              description,
-              image,
-              trailerLink,
-              thumbnail,
-              movieId,
-              nameRU,
-              nameEN,
-            }) => (
-              <MoviesCard
-                key={movieId}
-                isSaved={isSaved}
-                nameRU={nameRU}
-                duration={duration}
-                image={image}
-                title={nameRU}
-                time={duration}
-                country={country}
-                director={director}
-                year={year}
-                description={description}
-                trailerLink={trailerLink}
-                thumbnail={thumbnail}
-                movieId={movieId}
-                nameEN={nameEN}
+                baseId={isSavedMode ? _id : baseId}
+                isSavedPage={isSavedPage}
+                setUpdateSavedFilms={setUpdateSavedFilms}
               />
             )
           )}

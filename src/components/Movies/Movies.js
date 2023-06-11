@@ -9,9 +9,10 @@ import Overlay from "../Overlay/Overlay.js";
 import { getAllMovies } from "../../utils/MoviesApi.js";
 import useCurrentWidth from "../../hooks/useCurrentWidth.js";
 import "./Movies.css";
-import { CurrentUserContext } from "../../contexts/CurrentUserContext.js";
+import filterFilmsWithDuration from "../../utils/filterFilmsWithDuration.js";
+import { getMovies } from "../../utils/MainApi.js";
 
-function Movies({loggedIn}) {
+function Movies({ loggedIn }) {
   const [isLoading, setIsLoading] = useState();
   const [isNavigationOpened, setIsNavigationOpened] = useState(false);
   const [searchFormValue, setSearchFormValue] = useState("");
@@ -23,6 +24,11 @@ function Movies({loggedIn}) {
     firstView: null,
     countOfLoadCards: null,
   });
+  const [savedFilms, setSavedFilms] = useState([]);
+  const [savedFilmsIds, setSavedFilmsIds] = useState([]);
+  const [isSavedFilmsLoading, setIsSavedFilmsLoading] = useState(true);
+  const [updateSavedFilms, setUpdateSavedFilms] = useState(false);
+  const [allMovies, setAllMovies] = useState([]);
 
   const width = useCurrentWidth();
 
@@ -71,12 +77,20 @@ function Movies({loggedIn}) {
       .then((data) => {
         if (data.length > 0) {
           // фильтрует полученные с beatfilm-movies фильмы на соответсвие запросу пользователя
-          const filtered = data.filter((movie) =>
-            movie.nameRU.includes(searchFormValue)
-          );
+          let filtered = [];
+
+          if (isShortFilm) {
+            filtered = filterFilmsWithDuration(data).filter((movie) =>
+              movie.nameRU.toLowerCase().includes(searchFormValue.toLowerCase())
+            );
+          } else {
+            filtered = data.filter((movie) =>
+              movie.nameRU.toLowerCase().includes(searchFormValue.toLowerCase())
+            );
+          }
 
           localStorage.setItem("movies", JSON.stringify(filtered));
-          localStorage.setItem("is-short-film", isShortFilm);
+
           setFilteredMovies(filtered);
           //обрезает массив отфильтрованных фильмов в зависимости от расширения экрана
           const firstScreen = filtered.slice(0, cardViewRules.firstView);
@@ -94,6 +108,7 @@ function Movies({loggedIn}) {
   };
 
   const handleFilterCheckboxClick = () => {
+    localStorage.setItem("is-short-film", !isShortFilm);
     setIsShortFilm(!isShortFilm);
   };
 
@@ -103,12 +118,19 @@ function Movies({loggedIn}) {
 
     setFilteredMovies(JSON.parse(films));
     setSearchFormValue(localStorage.getItem("search-value"));
-    setIsShortFilm(localStorage.getItem("is-short-film"));
+    const isShort = localStorage.getItem("is-short-film");
+
+    if (isShort === "false") {
+      setIsShortFilm(false);
+    } else {
+      setIsShortFilm(true);
+    }
+
     setVisibleMovies(JSON.parse(visibleFilms));
   }, []);
 
   useEffect(() => {
-    const screenWidth = window.innerWidth;
+    const screenWidth = width;
 
     if (screenWidth >= 1280 || (screenWidth < 1280 && screenWidth > 768)) {
       setCardViewRules({ firstView: 12, countOfLoadCards: 3 });
@@ -123,9 +145,51 @@ function Movies({loggedIn}) {
       return;
     }
     return () => {};
-  }, []);
+  }, [width]);
 
-  const currentUser = React.useContext(CurrentUserContext);
+  useEffect(() => {
+    setIsSavedFilmsLoading(true);
+    getMovies()
+      .then((data) => {
+        setSavedFilms(data);
+        const ids = data.map((film) => film.movieId);
+        setSavedFilmsIds(ids);
+      })
+      .catch((err) => console.log(err))
+      .finally(() => setIsSavedFilmsLoading(false));
+  }, [updateSavedFilms]);
+
+  useEffect(() => {
+    if (isSavedFilmsLoading) return;
+    if (visibleMovies) {
+      // Устанавливаем значение иконки лайка
+      const movies = visibleMovies.map((movie) => {
+        if (savedFilmsIds.length) {
+          savedFilmsIds.includes(movie.id)
+            ? (movie.isSaved = true)
+            : (movie.isSaved = false);
+        }
+
+        if (savedFilms.length) {
+          const selectedFilm = savedFilms.find(
+            (item) => item.movieId === movie.id
+          );
+          movie.baseId = selectedFilm ? selectedFilm._id : null;
+        }
+
+        // добавляем id из нашей базы
+
+        return movie;
+      });
+      setAllMovies(movies);
+    }
+  }, [
+    filteredMovies,
+    isSavedFilmsLoading,
+    savedFilms,
+    savedFilmsIds,
+    visibleMovies,
+  ]);
 
   return (
     <>
@@ -138,7 +202,11 @@ function Movies({loggedIn}) {
           filterCheckboxSelected={isShortFilm}
           onFilterCheckboxClick={handleFilterCheckboxClick}
         />
-        <MoviesCardList cards={visibleMovies} />
+        <MoviesCardList
+          movies={allMovies}
+          isShortFilm={isShortFilm}
+          setUpdateSavedFilms={setUpdateSavedFilms}
+        />
         {filteredMovies !== null && filteredMovies.length === 0 && (
           <p className="movies__not-found-movie">Ничего не найдено</p>
         )}

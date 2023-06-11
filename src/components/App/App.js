@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import { Route, Switch, useHistory } from "react-router-dom";
 import "../../index.css";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import Main from "../Main/Main.js";
 import Movies from "../Movies/Movies.js";
 import SavedMovies from "../SavedMovies/SavedMovies.js";
@@ -112,20 +113,31 @@ function App() {
           <Route exact path="/">
             <Main loggedIn={loggedIn} />
           </Route>
-          <Route exact path="/movies">
-            <Movies loggedIn={loggedIn} />
-          </Route>
-          <Route exact path="/saved-movies">
-            <SavedMovies loggedIn={loggedIn} />
-          </Route>
-          <Route exact path="/profile">
-            <Profile
-              onProfileFormSubmit={handleProfileFormSubmit}
-              errorMessage={profileEditError}
-              setLoggedIn={setLoggedIn}
-              loggedIn={loggedIn}
-            />
-          </Route>
+          <ProtectedRoute
+            exact
+            path="/movies"
+            loggedIn={loggedIn}
+            component={<Movies loggedIn={loggedIn} />}
+          />
+          <ProtectedRoute
+            exact
+            path="/saved-movies"
+            loggedIn={loggedIn}
+            component={<SavedMovies loggedIn={loggedIn} />}
+          />
+          <ProtectedRoute
+            exact
+            path="/profile"
+            loggedIn={loggedIn}
+            component={
+              <Profile
+                onProfileFormSubmit={handleProfileFormSubmit}
+                errorMessage={profileEditError}
+                setLoggedIn={setLoggedIn}
+                loggedIn={loggedIn}
+              />
+            }
+          />
           <Route exact path="/signin">
             <Login errorMessage={loginError} handleLogin={handleLogin} />
           </Route>
