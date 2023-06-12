@@ -39,8 +39,6 @@ function Profile({ errorMessage, onProfileFormSubmit, setLoggedIn, loggedIn }) {
     return false;
   };
 
-  console.log(loggedIn);
-
   useEffect(() => {
     handleDefaultValues({ name: currentUser.name, email: currentUser.email });
   }, [currentUser]);

@@ -8,8 +8,6 @@ export function useFormWithValidation() {
   const [errors, setErrors] = React.useState({});
   const [isValid, setIsValid] = React.useState(false);
 
-  console.log(values);
-
   const handleDefaultValues = (values) => {
     setValues(values);
   };

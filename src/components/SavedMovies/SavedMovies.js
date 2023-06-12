@@ -21,6 +21,7 @@ function SavedMovies({ loggedIn }) {
     getMovies()
       .then((data) => {
         setSavedFilms(data);
+        setFilteredMovies(data);
       })
       .catch((err) => console.log(err));
   }, [updateSavedFilms]);
@@ -38,9 +39,9 @@ function SavedMovies({ loggedIn }) {
 
   const handleSearchFormSubmit = (event) => {
     event.preventDefault();
-    // Если поиск пустой показываем все сохраненные фильмы
+
     if (searchFormValue.length === 0) {
-      setFilteredMovies([]);
+      return alert("Нужно ввести ключевое слово");
     }
 
     let filtered = [];
@@ -78,7 +79,7 @@ function SavedMovies({ loggedIn }) {
           onFilterCheckboxClick={handleFilterCheckboxClick}
         />
         <MoviesCardList
-          movies={filteredMovies.length ? filteredMovies : savedFilms}
+          movies={filteredMovies}
           isSavedMode
           isSavedPage={true}
           searchFormInputValue={searchFormValue}
@@ -88,7 +89,9 @@ function SavedMovies({ loggedIn }) {
           onFilterCheckboxClick={handleFilterCheckboxClick}
           setUpdateSavedFilms={setUpdateSavedFilms}
         />
-        <div className="savedMovies"></div>
+        {filteredMovies !== null && filteredMovies.length === 0 && (
+          <p className="movies__not-found-movie">Ничего не найдено</p>
+        )}
       </main>
       <Footer />
       <Navigation

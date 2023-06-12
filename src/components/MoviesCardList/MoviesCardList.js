@@ -10,7 +10,7 @@ function MoviesCardList({
 }) {
   return (
     <section className="movies-card-list">
-      {movies && movies.length && (
+      {Boolean(movies) && Boolean(movies.length) && (
         <>
           {movies.map(
             ({
@@ -29,7 +29,7 @@ function MoviesCardList({
               _id,
             }) => (
               <MoviesCard
-                key={id}
+                key={id || _id}
                 isSaved={isSaved}
                 nameRU={nameRU}
                 duration={duration}
