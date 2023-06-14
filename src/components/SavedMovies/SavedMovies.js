@@ -59,7 +59,6 @@ function SavedMovies({ loggedIn }) {
   };
 
   const handleFilterCheckboxClick = () => {
-    localStorage.setItem("is-short-film", !isShortFilm);
     setIsShortFilm(!isShortFilm);
   };
   const closeNavigation = () => {
