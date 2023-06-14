@@ -44,7 +44,11 @@ function Profile({ errorMessage, onProfileFormSubmit, setLoggedIn, loggedIn }) {
   }, [currentUser]);
 
   const logout = () => {
-    localStorage.setItem("token", "");
+    localStorage.removeItem("token");
+    localStorage.removeItem("is-short-film");
+    localStorage.removeItem("visible-movies");
+    localStorage.removeItem("search-value");
+    localStorage.removeItem("movies");
     setLoggedIn(false);
     history.push("/");
   };

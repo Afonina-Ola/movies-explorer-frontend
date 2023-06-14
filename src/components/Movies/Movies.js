@@ -116,17 +116,21 @@ function Movies({ loggedIn }) {
     const films = localStorage.getItem("movies");
     const visibleFilms = localStorage.getItem("visible-movies");
 
-    setFilteredMovies(JSON.parse(films));
+    if (films) {
+      setFilteredMovies(JSON.parse(films));
+    }
+    if (visibleFilms) {
+      setVisibleMovies(JSON.parse(visibleFilms));
+    }
+
     setSearchFormValue(localStorage.getItem("search-value"));
     const isShort = localStorage.getItem("is-short-film");
 
-    if (isShort === "false") {
+    if (isShort === "false" || !isShort) {
       setIsShortFilm(false);
     } else {
       setIsShortFilm(true);
     }
-
-    setVisibleMovies(JSON.parse(visibleFilms));
   }, []);
 
   useEffect(() => {
