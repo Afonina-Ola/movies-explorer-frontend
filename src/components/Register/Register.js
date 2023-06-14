@@ -1,11 +1,18 @@
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useEffect } from "react";
+import { NavLink, useHistory } from "react-router-dom";
 import { useFormWithValidation } from "../../hooks/useFormWithValidation.js";
 import "./Register.css";
 import smile from "../../images/smile.svg";
 
-function Register({ errorMessage, handleRegister }) {
+function Register({ errorMessage, handleRegister, loggedIn }) {
+  const history = useHistory();
   const { values, handleChange, errors, isValid } = useFormWithValidation();
+
+  useEffect(() => {
+    if (loggedIn) {
+      history.push("/");
+    }
+  }, []);
 
   return (
     <main className="register">
@@ -60,7 +67,9 @@ function Register({ errorMessage, handleRegister }) {
             placeholder="Пароль"
           />
           {Boolean(errors["password"]) && (
-            <span className="register__error-message">{errors["password"]}</span>
+            <span className="register__error-message">
+              {errors["password"]}
+            </span>
           )}
         </fieldset>
 

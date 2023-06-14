@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useFormWithValidation } from "../../hooks/useFormWithValidation.js";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import "./Login.css";
 import smile from "../../images/smile.svg";
 
-function Login({ handleLogin, errorMessage }) {
+function Login({ handleLogin, errorMessage, loggedIn }) {
+  const history = useHistory();
   const { values, handleChange, errors, isValid } = useFormWithValidation();
+
+  useEffect(() => {
+    if (loggedIn) {
+      history.push("/");
+    }
+  }, []);
 
   return (
     <main className="login">

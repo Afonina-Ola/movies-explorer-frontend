@@ -142,10 +142,15 @@ function App() {
             }
           />
           <Route exact path="/signin">
-            <Login errorMessage={loginError} handleLogin={handleLogin} />
+            <Login
+              loggedIn={loggedIn}
+              errorMessage={loginError}
+              handleLogin={handleLogin}
+            />
           </Route>
           <Route exact path="/signup">
             <Register
+              loggedIn={loggedIn}
               errorMessage={registerError}
               handleRegister={handleRegister}
             />
