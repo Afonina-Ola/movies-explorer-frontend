@@ -52,7 +52,7 @@ function SavedMovies({ loggedIn }) {
       );
     } else {
       filtered = savedFilms.filter((movie) =>
-        movie.nameRU.includes(searchFormValue)
+        movie.nameRU.toLowerCase().includes(searchFormValue.toLowerCase())
       );
     }
     setFilteredMovies(filtered);
