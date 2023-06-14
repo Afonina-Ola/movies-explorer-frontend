@@ -34,6 +34,7 @@ body {
 
 main {
   display: block;
+  min-height: 80vh;
 }
 
 /**

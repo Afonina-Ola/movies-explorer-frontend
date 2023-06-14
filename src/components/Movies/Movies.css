@@ -30,3 +30,22 @@
     padding: 61px 60px 89px;
   }
 }
+
+.movies__not-found-movie {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  align-items: center;
+  text-align: center;
+  color: #000000;
+  margin: 0 auto;
+  background: transparent;
+  padding: 50px 0 80px;
+}
+
+@media screen and (max-width: 1000px) {
+  .movies__not-found-movie {
+    padding: 61px 0px 89px;
+  }
+}
