@@ -29,6 +29,7 @@ function Movies({ loggedIn }) {
   const [isSavedFilmsLoading, setIsSavedFilmsLoading] = useState(true);
   const [updateSavedFilms, setUpdateSavedFilms] = useState(false);
   const [allMovies, setAllMovies] = useState([]);
+  const [allServerMovies, setAllServerMovies] = useState([]);
 
   const width = useCurrentWidth();
 
@@ -71,40 +72,69 @@ function Movies({ loggedIn }) {
       return alert("Нужно ввести ключевое слово");
     }
     localStorage.setItem("search-value", searchFormValue);
-    setIsLoading(true);
-    setIsRequestError(false);
-    getAllMovies()
-      .then((data) => {
-        if (data.length > 0) {
-          // фильтрует полученные с beatfilm-movies фильмы на соответсвие запросу пользователя
-          let filtered = [];
+    if (!allServerMovies.length) {
+      setIsLoading(true);
+      setIsRequestError(false);
+      getAllMovies()
+        .then((data) => {
+          setAllServerMovies(data);
+          localStorage.setItem("all-server-movies", JSON.stringify(data));
 
-          if (isShortFilm) {
-            filtered = filterFilmsWithDuration(data).filter((movie) =>
-              movie.nameRU.toLowerCase().includes(searchFormValue.toLowerCase())
-            );
-          } else {
-            filtered = data.filter((movie) =>
-              movie.nameRU.toLowerCase().includes(searchFormValue.toLowerCase())
-            );
+          if (data.length > 0) {
+            // фильтрует полученные с beatfilm-movies фильмы на соответсвие запросу пользователя
+            let filtered = [];
+
+            if (isShortFilm) {
+              filtered = filterFilmsWithDuration(data).filter((movie) =>
+                movie.nameRU
+                  .toLowerCase()
+                  .includes(searchFormValue.toLowerCase())
+              );
+            } else {
+              filtered = data.filter((movie) =>
+                movie.nameRU
+                  .toLowerCase()
+                  .includes(searchFormValue.toLowerCase())
+              );
+            }
+
+            localStorage.setItem("movies", JSON.stringify(filtered));
+
+            setFilteredMovies(filtered);
+            //обрезает массив отфильтрованных фильмов в зависимости от расширения экрана
+            const firstScreen = filtered.slice(0, cardViewRules.firstView);
+            localStorage.setItem("visible-movies", JSON.stringify(firstScreen));
+            setVisibleMovies(firstScreen);
           }
+        })
+        .catch((err) => {
+          console.log(err);
+          setIsRequestError(true);
+        })
+        .finally(() => {
+          setIsLoading(false);
+        });
+    } else {
+      let filtered = [];
 
-          localStorage.setItem("movies", JSON.stringify(filtered));
+      if (isShortFilm) {
+        filtered = filterFilmsWithDuration(allServerMovies).filter((movie) =>
+          movie.nameRU.toLowerCase().includes(searchFormValue.toLowerCase())
+        );
+      } else {
+        filtered = allServerMovies.filter((movie) =>
+          movie.nameRU.toLowerCase().includes(searchFormValue.toLowerCase())
+        );
+      }
 
-          setFilteredMovies(filtered);
-          //обрезает массив отфильтрованных фильмов в зависимости от расширения экрана
-          const firstScreen = filtered.slice(0, cardViewRules.firstView);
-          localStorage.setItem("visible-movies", JSON.stringify(firstScreen));
-          setVisibleMovies(firstScreen);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-        setIsRequestError(true);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
+      localStorage.setItem("movies", JSON.stringify(filtered));
+
+      setFilteredMovies(filtered);
+      //обрезает массив отфильтрованных фильмов в зависимости от расширения экрана
+      const firstScreen = filtered.slice(0, cardViewRules.firstView);
+      localStorage.setItem("visible-movies", JSON.stringify(firstScreen));
+      setVisibleMovies(firstScreen);
+    }
   };
 
   const handleFilterCheckboxClick = () => {
@@ -115,12 +145,17 @@ function Movies({ loggedIn }) {
   useEffect(() => {
     const films = localStorage.getItem("movies");
     const visibleFilms = localStorage.getItem("visible-movies");
+    const allMovies = localStorage.getItem("all-server-movies");
 
     if (films) {
       setFilteredMovies(JSON.parse(films));
     }
     if (visibleFilms) {
       setVisibleMovies(JSON.parse(visibleFilms));
+    }
+
+    if (allMovies) {
+      setAllServerMovies(JSON.parse(allMovies));
     }
 
     setSearchFormValue(localStorage.getItem("search-value"));

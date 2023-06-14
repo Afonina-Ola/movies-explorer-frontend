@@ -55,6 +55,7 @@ function Profile({
     localStorage.removeItem("visible-movies");
     localStorage.removeItem("search-value");
     localStorage.removeItem("movies");
+    localStorage.removeItem("all-server-movies");
     setCurrentUser({});
     setLoggedIn(false);
     history.push("/");
