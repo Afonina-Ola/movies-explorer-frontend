@@ -8,7 +8,13 @@ import { useFormWithValidation } from "../../hooks/useFormWithValidation.js";
 
 import "./Profile.css";
 
-function Profile({ errorMessage, onProfileFormSubmit, setLoggedIn, loggedIn }) {
+function Profile({
+  errorMessage,
+  onProfileFormSubmit,
+  setLoggedIn,
+  loggedIn,
+  setCurrentUser,
+}) {
   const history = useHistory();
 
   const [isNavigationOpened, setIsNavigationOpened] = useState(false);
@@ -49,6 +55,7 @@ function Profile({ errorMessage, onProfileFormSubmit, setLoggedIn, loggedIn }) {
     localStorage.removeItem("visible-movies");
     localStorage.removeItem("search-value");
     localStorage.removeItem("movies");
+    setCurrentUser({});
     setLoggedIn(false);
     history.push("/");
   };

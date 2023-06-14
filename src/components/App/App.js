@@ -95,12 +95,13 @@ function App() {
 
   // Данные пользователя
   useEffect(() => {
+    if (!loggedIn) return;
     getUserData()
       .then((data) => {
         setCurrentUser(data);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [loggedIn]);
 
   if (loading) {
     return "...Loading";
@@ -135,6 +136,7 @@ function App() {
                 errorMessage={profileEditError}
                 setLoggedIn={setLoggedIn}
                 loggedIn={loggedIn}
+                setCurrentUser={setCurrentUser}
               />
             }
           />
