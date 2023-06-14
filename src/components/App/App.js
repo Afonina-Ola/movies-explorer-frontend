@@ -70,6 +70,7 @@ function App() {
     editUserData(userData)
       .then((data) => {
         setCurrentUser(data);
+        alert("Данные пользователя обновлены");
       })
       .catch((err) => {
         setProfileEditError(err);
