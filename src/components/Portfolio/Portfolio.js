@@ -7,7 +7,7 @@ function Portfolio() {
         <section className="portfolio">
             <h2 className="portfolio__title">Портфолио</h2>
             <ul className="portfolio__list">
-                <li className="portfolio__item"> <a className="portfolio__item-container" target="_blank" href="https://github.com/Afonina-Ola/russian-travel" rel="noreferrer">
+                <li className="portfolio__item"> <a className="portfolio__item-container" target="_blank" href="https://github.com/Afonina-Ola/how-to-learn" rel="noreferrer">
                     <p className="portfolio__item-text">Статичный сайт</p>
                     <img src={indicator} className="portfolio__item-indicator" alt='рисунок стрелочки' />
                 </a></li>

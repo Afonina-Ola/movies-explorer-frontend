@@ -9,7 +9,7 @@ import Portfolio from '../Portfolio/Portfolio.js';
 import Navigation from '../Navigation/Navigation.js';
 import Overlay from '../Overlay/Overlay.js';
 
-function Main() {
+function Main({loggedIn}) {
   const [isNavigationOpened, setIsNavigationOpened] = useState(false);
   
   const body = document.querySelector('.body');
@@ -26,7 +26,7 @@ function Main() {
 
   return (
     <>
-      <Header onBurgerButtonClick={openNavigation} isLogged={true} />
+      <Header onBurgerButtonClick={openNavigation} isLogged={loggedIn} />
       <main>
         <Promo />
         <AboutProject />
